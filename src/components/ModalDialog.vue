@@ -124,6 +124,9 @@ p {
   display: table;
   transition: opacity 0.3s ease;
 }
+.status{
+  text-transform: uppercase;
+}
 
 input {
   width: 100%;
