@@ -54,19 +54,19 @@ export default {
         {
           id: 0,
           title: "Mock data",
-          content: "pls add original data",
+          content: "THIS DATA WILL GET OVERWRITTEN",
           status: "COMPLETED",
         },
         {
           id: 0,
           title: "Mock data",
-          content: "pls add original data",
+          content: "THIS DATA WILL GET OVERWRITTEN",
           status: "IN PROGRESS",
         },
         {
           id: 0,
           title: "Mock data",
-          content: "pls add original data",
+          content: "THIS DATA WILL GET OVERWRITTEN",
           status: "TO DO",
         },
       ],
@@ -89,7 +89,8 @@ export default {
   },
   methods: {
     setData(e) {
-      this.updatedData = e;
+      this.updatedData = Object.assign(this.updatedData,e)
+      
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.updatedData));
       this.showModal = false;
       this.componentKey += 1;
