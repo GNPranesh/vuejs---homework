@@ -3,10 +3,10 @@
     <thead>
       <tr>
         <th></th>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Content</th>
-        <th>Status</th>
+        <th  @click="sortList('id')">Id &#8597;</th>
+        <th @click="sortList('title')">Title &#8597;</th>
+        <th @click="sortList('content')">Content &#8597;</th>
+        <th @click="sortList('status')">Status &#8597;</th>
       </tr>
     </thead>
 
@@ -49,9 +49,12 @@ export default {
       this.showAlert = true;
       this.checkedId = e;
       this.$emit("select", this.showAlert, this.checkedId);
-      console.log("checked", this.checkedNames);
     },
+    sortList (e){
+    this.$emit("sortId", e);
+  }
   },
+  
 };
 </script>
 <style>
@@ -62,6 +65,9 @@ export default {
 
 .tbldata {
   text-align: center;
+}
+th {
+    cursor: pointer;
 }
 
 table {

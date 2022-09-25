@@ -10,6 +10,7 @@
     :key="componentKey"
     @select="setNotification"
     :checkedNames="checkboxId"
+    @sortId="sortData"
   >
   </BaseComp>
   <button
@@ -42,6 +43,7 @@ import TitleHeaderVue from "./components/TitleHeader.vue";
 import ModalDialog from "./components/ModalDialog.vue";
 import NotificationBoxVue from "./components/NotificationBox.vue";
 
+
 const STORAGE_KEY = "test_app";
 
 export default {
@@ -53,20 +55,20 @@ export default {
       updatedData: [
         {
           id: 0,
-          title: "Mock data",
-          content: "THIS DATA WILL GET OVERWRITTEN",
+          title: "Mock data THIS DATA WILL GET OVERWRITTEN",
+          content: "Please start adding Data",
           status: "COMPLETED",
         },
         {
           id: 0,
-          title: "Mock data",
-          content: "THIS DATA WILL GET OVERWRITTEN",
+          title: "Mock data THIS DATA WILL GET OVERWRITTEN",
+          content: "Please start adding Data",
           status: "IN PROGRESS",
         },
         {
           id: 0,
-          title: "Mock data",
-          content: "THIS DATA WILL GET OVERWRITTEN",
+          title: "Mock data THIS DATA WILL GET OVERWRITTEN",
+          content: "Please start adding Data",
           status: "TO DO",
         },
       ],
@@ -79,6 +81,7 @@ export default {
       componentKey: 0,
       componentKeyAlert: 0,
       checkboxId: [],
+      sortedbyASC: true,
     };
   },
   components: {
@@ -90,7 +93,7 @@ export default {
   methods: {
     setData(e) {
       this.updatedData = Object.assign(this.updatedData,e)
-      
+
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.updatedData));
       this.showModal = false;
       this.componentKey += 1;
@@ -118,6 +121,16 @@ export default {
       let index = this.updatedData.findIndex((i) => i.id === this.checkboxId);
       this.updatedData.splice(index, 1);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.updatedData));
+    },
+    sortData(e) {
+     console.log("sortdata",e) 
+     if (this.sortedbyASC) {
+        this.updatedData.sort((x, y) => (x[e] > y[e] ? -1 : 1));
+        this.sortedbyASC = false;
+      } else {
+        this.updatedData.sort((x, y) => (x[e] < y[e] ? -1 : 1));
+        this.sortedbyASC = true;
+      }
     },
   },
 };
@@ -147,7 +160,9 @@ export default {
   text-transform: uppercase;
   border-radius: 8px;
 }
-
+button{
+  cursor: pointer;
+}
 .btn:hover {
   background: #474e83;
 }
