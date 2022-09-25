@@ -14,4 +14,21 @@ describe('ModalDialog', () => {
     test('does a wrapper exist', () => {
       expect(wrapper.exists()).toBe(true)
     })
+
+    test('should render button', async () => {
+        const wrapper = mount(ModalDialog)     
+        await wrapper.setProps({
+          show: true
+        })
+        expect(wrapper.find('button').exists()).toBe(true)
+      })
+
+      test('should render text', async () => {
+        const wrapper = mount(ModalDialog)     
+        await wrapper.setProps({
+          show: true
+        })
+        expect(wrapper.text()).toMatch(/default header/)
+      })
+      
   })

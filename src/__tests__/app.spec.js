@@ -14,4 +14,18 @@ describe('App', () => {
     test('does a wrapper exist', () => {
       expect(wrapper.exists()).toBe(true)
     })
+
+    // it's also easy to check for the existence of elements
+it('has a button', () => {
+    expect(wrapper.find('button').exists()).toBe(true)
   })
+
+  it('updates text', async () => {
+    const wrapper = mount(App)
+    await wrapper.find('button').trigger('click')
+    expect(wrapper.text()).toContain('Add')
+  })
+
+  })
+
+  

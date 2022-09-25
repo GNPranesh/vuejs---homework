@@ -14,4 +14,8 @@ describe('BaseComp', () => {
     test('does a wrapper exist', () => {
       expect(wrapper.exists()).toBe(true)
     })
+    it('updates text', async () => {
+        const wrapper = mount(BaseComp)
+        expect(wrapper.text()).toContain('Title')
+      })
   })

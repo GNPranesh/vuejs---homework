@@ -14,4 +14,19 @@ describe('NotificationBox', () => {
     test('does a wrapper exist', () => {
       expect(wrapper.exists()).toBe(true)
     })
+
+    test('should render text', async () => {
+        const wrapper = mount(NotificationBox)     
+        await wrapper.setProps({
+          display: true
+        })
+        expect(wrapper.text()).toMatch(/Do you want to delete this note?/)
+      })
+      test('should render button', async () => {
+        const wrapper = mount(NotificationBox)     
+        await wrapper.setProps({
+          display: true
+        })
+        expect(wrapper.find('button').exists()).toBe(true)
+      })
   })
