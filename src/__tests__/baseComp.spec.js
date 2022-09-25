@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils'
 import BaseComp from '../components/BaseComp.vue'
+import sinon from 'sinon'
 
 describe('BaseComp', () => {
     // Inspect the raw component options
@@ -18,4 +19,11 @@ describe('BaseComp', () => {
         const wrapper = mount(BaseComp)
         expect(wrapper.text()).toContain('Title')
       })
+
+    //   it('Click on yes button calls id method with argument "id"', async () => {
+    //     const wrapper = mount(BaseComp)
+    //     const sortList = jest.fn()
+    //     await wrapper.find('th').trigger('click')
+    //            expect(sortList).toBeCalled('0')
+    //   })
   })

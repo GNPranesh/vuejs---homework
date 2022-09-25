@@ -46,22 +46,19 @@ export default {
       errors: [],
 
     }),
-  watch: {
-    todos: {
-      handler(todos) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
-      },
-      deep: true
-    }
-  },
-  mounted() {
-    window.addEventListener('hashchange', this.onHashChange)
-    //this.onHashChange()
-  },
+  // watch: {
+  //   todos: {
+  //     handler(todos) {
+  //       localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
+  //     },
+  //     deep: true
+  //   }
+  // },
+  // mounted() {
+  //   window.addEventListener('hashchange', this.onHashChange)
+  //   //this.onHashChange()
+  // },
   methods: {
-    toggleAll(e) {
-      this.todos.forEach((todo) => (todo.completed = e.target.checked))
-    },
     addTodo() {
 
       this.errors = [];

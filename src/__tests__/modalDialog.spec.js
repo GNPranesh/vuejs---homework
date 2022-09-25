@@ -30,5 +30,15 @@ describe('ModalDialog', () => {
         })
         expect(wrapper.text()).toMatch(/default header/)
       })
+
+      it('Click on yes button calls id method with argument "id"', async () => {
+        const wrapper = mount(ModalDialog)
+        await wrapper.setProps({
+            show: true
+          })
+        const addTodo = jest.fn()
+        await wrapper.find('button.savebtn').trigger('click')
+        expect(addTodo).not.toBeCalled()
+      })
       
   })
