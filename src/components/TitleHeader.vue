@@ -1,62 +1,71 @@
 <template>
-    <div class="root">
-        <div class="report">
-            <span>Total
-                <h1>{{numbers.num3 = numbers.num1 + numbers.num2}} </h1>
-            </span>
-            <span>Completed
-                <h1>
-                    {{numbers.num1 }}
-                </h1>
-            </span>
-            <span>Not Completed
-                <h1>
-                    {{numbers.num2}}
-                </h1>
-            </span>
-            <span> </span>
-        </div>
-        <div class="empty"></div>
+  <div class="root">
+    <div class="report">
+      <span
+        >Total
+        <h1>{{ (num4 = num1 + num2 + num3) }}</h1>
+      </span>
+      <span
+        >Completed
+        <h1>
+          {{ num1 }}
+        </h1>
+      </span>
+      <span
+        >Not Completed
+        <h1>
+          {{ num2 + num3 }}
+        </h1>
+      </span>
+      <span> </span>
     </div>
+    <div class="empty"></div>
+  </div>
 </template>
 
 <script>
+// var completed = this.testData.find((i) => i.id === "COMPLETED");
+// var inProgress = this.testData.find((i) => i.id === "IN PROGRESS");
+// var todo = this.testData.find((i) => i.id === "TO DO");
+
 export default {
-    name: 'TitleHeader',
-    data() {
-        return {
-            numbers:
-                { num1: 10, num2: 8, num3: 0 }
-        }
-    }
+  props: ["testData","num1","num2","num3"],
+  name: "TitleHeader",
+
+  data() {
+    return {
+      num4: 0,
+    };
+  }
 };
 </script>
 
 <style>
 .root {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
+
 .report {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    height: 120px;
-    flex-grow: 2;
-    border: 1px solid #7D82A8;
-    background-color: #e0dede;
-    color: #646464;
-    text-transform: uppercase;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 120px;
+  flex-grow: 2;
+  border: 1px solid #7d82a8;
+  background-color: #e0dede;
+  color: #646464;
+  text-transform: uppercase;
+  align-items: center;
 }
 
 .empty {
-    display: flex;
-    flex-grow: 3;
+  display: flex;
+  flex-grow: 3;
 }
 
 span {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 </style>

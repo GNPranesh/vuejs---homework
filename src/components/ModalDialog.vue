@@ -88,7 +88,6 @@ export default {
         status: `${this.status}`
       })
       this.testData = this.todos;
-      console.log("checking data", this.testData)
       this.title = this.content = this.status = ""
       this.$emit('close', this.testData)
     }
@@ -172,9 +171,8 @@ input {
 }
 
 .modal-body {
-  margin: 20px 0;
+  margin: 20px 0; 
 }
-
 .modal-default-button {
   float: right;
 }

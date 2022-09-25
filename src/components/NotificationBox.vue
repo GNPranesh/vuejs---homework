@@ -7,7 +7,7 @@
             <button @click="resetAlert" class="btnStyle">No</button>
         </div>
         <div class="btnstyleYes">
-            <button class="btnStyle">Yes</button>
+            <button class="btnStyle" @click="$emit('removeData')">Yes</button>
         </div>
 
     </div>
