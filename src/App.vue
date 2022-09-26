@@ -108,6 +108,15 @@ export default {
       let index = this.updatedData.findIndex((i) => i.id === this.checkboxId);
       this.updatedData.splice(index, 1);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.updatedData));
+
+      this.numObj1 = this.updatedData.filter((i) => i.status === "COMPLETED");
+      this.number1 = this.numObj1.length;
+
+      this.numObj2 = this.updatedData.filter((i) => i.status === "IN PROGRESS");
+      this.number2 = this.numObj2.length;
+
+      this.numObj3 = this.updatedData.filter((i) => i.status === "TO DO");
+      this.number3 = this.numObj3.length;
     },
     loadModal(){
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.updatedData));
