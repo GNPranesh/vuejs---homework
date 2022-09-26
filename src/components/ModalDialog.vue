@@ -76,7 +76,7 @@ export default {
         id: count,
         title: `${this.title}`,
         content: `${this.content}`,
-        status: `${this.status}`
+        status: `${this.status.toUpperCase()}`
       })
       this.testData = this.todos;
       this.title = this.content = this.status = ""
