@@ -16,7 +16,7 @@
   <button
     class="btn"
     id="show-modal"
-    @click="showModal = true"
+    @click="loadModal"
     @testData="setData(testData)"
   >
     Add
@@ -54,23 +54,11 @@ export default {
       showAlert: false,
       updatedData: [
         {
-          id: 0,
-          title: "Mock data THIS DATA WILL GET OVERWRITTEN",
-          content: "Please start adding Data",
+          id: 1,
+          title: "Initial Data",
+          content: "This is the initial data hard coded",
           status: "COMPLETED",
-        },
-        {
-          id: 0,
-          title: "Mock data THIS DATA WILL GET OVERWRITTEN",
-          content: "Please start adding Data",
-          status: "IN PROGRESS",
-        },
-        {
-          id: 0,
-          title: "Mock data THIS DATA WILL GET OVERWRITTEN",
-          content: "Please start adding Data",
-          status: "TO DO",
-        },
+        }
       ],
       number1: 1,
       number2: 1,
@@ -93,7 +81,7 @@ export default {
   methods: {
     setData(e) {
       this.updatedData = Object.assign(this.updatedData,e)
-      
+
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.updatedData));
       this.showModal = false;
       this.componentKey += 1;
@@ -120,6 +108,10 @@ export default {
       let index = this.updatedData.findIndex((i) => i.id === this.checkboxId);
       this.updatedData.splice(index, 1);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.updatedData));
+    },
+    loadModal(){
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.updatedData));
+      this.showModal = true;
     },
     sortData(e) {
      if (this.sortedbyASC) {

@@ -41,16 +41,14 @@ export default {
   },
   data: () => (
     {
-      todos: JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'),
+      todos: [],
       testData: [],
-      errors: [],
-      count:0,
-      cnt:[]
+      errors: []
     }),
   watch: {
     show: {
       handler() {
-        this.todos = JSON.parse(localStorage.getItem(STORAGE_KEY))
+        this.todos = JSON.parse(localStorage.getItem(STORAGE_KEY)) 
       },
       deep: true
     }
@@ -71,15 +69,11 @@ export default {
         console.log("check if we are here", this.errors)
         return
       }
-      let lengthCount = this.todos.length;
-      this.cnt = this.todos.find(i => {
-        if (i.id === lengthCount) {
-          return this.count = i.id
-        }
-      })
-      this.count = this.count + 1;
+     
+      let count = this.todos.length
+      count = count + 1;
       this.todos.push({
-        id: this.count,
+        id: count,
         title: `${this.title}`,
         content: `${this.content}`,
         status: `${this.status}`
