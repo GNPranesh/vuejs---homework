@@ -31,13 +31,11 @@
 
 <script>
 const STORAGE_KEY = "test_app";
-//console.log(this.testData)
 export default {
   props: ["testData"],
 
   name: "BaseComp",
   data() {
-    console.log("base component", this.testData);
     return {
       rows: JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"),
       showAlert: false,

@@ -93,7 +93,7 @@ export default {
   methods: {
     setData(e) {
       this.updatedData = Object.assign(this.updatedData,e)
-
+      
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.updatedData));
       this.showModal = false;
       this.componentKey += 1;
@@ -114,7 +114,6 @@ export default {
     removeNotification(e, data) {
       this.showAlert = e;
       this.checkboxId = data;
-      console.log("checkbox id", this.checkboxId);
     },
     removeSelectedData() {
       this.showAlert = false;
@@ -123,7 +122,6 @@ export default {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(this.updatedData));
     },
     sortData(e) {
-     console.log("sortdata",e) 
      if (this.sortedbyASC) {
         this.updatedData.sort((x, y) => (x[e] > y[e] ? -1 : 1));
         this.sortedbyASC = false;

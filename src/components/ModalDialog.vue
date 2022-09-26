@@ -44,23 +44,17 @@ export default {
       todos: JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'),
       testData: [],
       errors: [],
-
     }),
-  // watch: {
-  //   todos: {
-  //     handler(todos) {
-  //       localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
-  //     },
-  //     deep: true
-  //   }
-  // },
-  // mounted() {
-  //   window.addEventListener('hashchange', this.onHashChange)
-  //   //this.onHashChange()
-  // },
+  watch: {
+    show: {
+      handler() {
+        this.todos= JSON.parse(localStorage.getItem(STORAGE_KEY))
+      },
+      deep: true
+    }
+  },
   methods: {
     addTodo() {
-
       this.errors = [];
       if (!this.title) {
         this.errors.push('title required.');
@@ -75,7 +69,6 @@ export default {
         console.log("check if we are here",this.errors)
         return
       }
-      
       let count = this.todos.length
       count = count + 1;
       this.todos.push({
