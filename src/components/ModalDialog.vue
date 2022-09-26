@@ -44,11 +44,13 @@ export default {
       todos: JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'),
       testData: [],
       errors: [],
+      count:0,
+      cnt:[]
     }),
   watch: {
     show: {
       handler() {
-        this.todos= JSON.parse(localStorage.getItem(STORAGE_KEY))
+        this.todos = JSON.parse(localStorage.getItem(STORAGE_KEY))
       },
       deep: true
     }
@@ -66,13 +68,18 @@ export default {
         this.errors.push('status required.');
       }
       if (this.errors.length !== 0) {
-        console.log("check if we are here",this.errors)
+        console.log("check if we are here", this.errors)
         return
       }
-      let count = this.todos.length
-      count = count + 1;
+      let lengthCount = this.todos.length;
+      this.cnt = this.todos.find(i => {
+        if (i.id === lengthCount) {
+          return this.count = i.id
+        }
+      })
+      this.count = this.count + 1;
       this.todos.push({
-        id: count,
+        id: this.count,
         title: `${this.title}`,
         content: `${this.content}`,
         status: `${this.status}`
@@ -88,7 +95,7 @@ export default {
 <style>
 .savebtn {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;  
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 25%;
   float: left;
@@ -103,9 +110,11 @@ export default {
 .savebtn:hover {
   background: #474e83;
 }
+
 p {
   color: red;
 }
+
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -117,7 +126,8 @@ p {
   display: table;
   transition: opacity 0.3s ease;
 }
-.status{
+
+.status {
   text-transform: uppercase;
 }
 
@@ -164,8 +174,9 @@ input {
 }
 
 .modal-body {
-  margin: 20px 0; 
+  margin: 20px 0;
 }
+
 .modal-default-button {
   float: right;
 }
